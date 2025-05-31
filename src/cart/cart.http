@@ -1,0 +1,36 @@
+### Get user cart
+GET http://localhost:3000/cart/user/1
+
+### Add guitar to cart
+POST http://localhost:3000/cart/add
+Content-Type: application/json
+
+{
+    "userId": "1",
+    "productId": "1",
+    "quantity": 1
+}
+
+### Add drum kit to cart
+POST http://localhost:3000/cart/add
+Content-Type: application/json
+
+{
+    "userId": "1",
+    "productId": "4",
+    "quantity": 1
+}
+
+### Update cart item quantity
+PATCH http://localhost:3000/cart/item/1
+Content-Type: application/json
+
+{
+    "quantity": 2
+}
+
+### Remove item from cart
+DELETE http://localhost:3000/cart/item/1
+
+### Clear user cart
+DELETE http://localhost:3000/cart/user/1/clear

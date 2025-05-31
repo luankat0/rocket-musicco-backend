@@ -1,0 +1,171 @@
+# RocketLab Music Store API - Complete Flow Examples
+
+## 1. User Management
+
+### Create a musician user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Maria Fernanda",
+    "email": "maria.guitarrista@email.com",
+    "password": "rock123"
+}
+
+### Create a music teacher user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "João Professor",
+    "email": "joao.professor@email.com",
+    "password": "ensino456"
+}
+
+### List all users
+GET http://localhost:3000/users
+
+###
+
+## 2. Instrument Management
+
+### Create a guitar
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Guitarra Fender Telecaster",
+    "price": 2699.99,
+    "description": "Guitarra elétrica com corpo em ash e braço em maple, som vintage clássico",
+    "category": "Guitarras",
+    "stock": 8
+}
+
+### Create a violin
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Violino Eagle VE441",
+    "price": 899.99,
+    "description": "Violino 4/4 com tampo em spruce e laterais em maple flameado",
+    "category": "Cordas",
+    "stock": 15
+}
+
+### Create a drum kit
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Bateria Tama Imperialstar",
+    "price": 3899.99,
+    "description": "Kit completo 5 peças com cascos em poplar e ferragens cromadas",
+    "category": "Baterias",
+    "stock": 4
+}
+
+### Create a piano
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Piano Digital Yamaha P-125",
+    "price": 4599.99,
+    "description": "Piano digital 88 teclas com ação GHS e sons Pure CF",
+    "category": "Teclados",
+    "stock": 6
+}
+
+### List all instruments
+GET http://localhost:3000/products
+
+### Search for guitars
+GET http://localhost:3000/products/search?query=guitarra
+
+### Filter by price range (instruments under R$ 2000)
+GET http://localhost:3000/products/price-range?minPrice=500&maxPrice=2000
+
+### Get instruments in stock
+GET http://localhost:3000/products/in-stock
+
+###
+
+## 3. Shopping Cart Flow
+
+### Add guitar to cart (user ID 1, guitar ID 1)
+POST http://localhost:3000/cart/add
+Content-Type: application/json
+
+{
+    "userId": "1",
+    "productId": "1",
+    "quantity": 1
+}
+
+### Add violin to cart
+POST http://localhost:3000/cart/add
+Content-Type: application/json
+
+{
+    "userId": "1",
+    "productId": "2",
+    "quantity": 1
+}
+
+### View cart
+GET http://localhost:3000/cart/user/1
+
+### Update guitar quantity in cart
+PATCH http://localhost:3000/cart/item/1
+Content-Type: application/json
+
+{
+    "quantity": 2
+}
+
+###
+
+## 4. Order Processing
+
+### Create order from cart (checkout)
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "userId": "1"
+}
+
+### View user orders
+GET http://localhost:3000/orders/user/1
+
+### View specific order
+GET http://localhost:3000/orders/1
+
+### Update order status to shipped
+PATCH http://localhost:3000/orders/1
+Content-Type: application/json
+
+{
+    "status": "shipped"
+}
+
+###
+
+## 5. Additional Operations
+
+### Get updated instrument stock after order
+GET http://localhost:3000/products/1
+
+### Add piano to cart for another order
+POST http://localhost:3000/cart/add
+Content-Type: application/json
+
+{
+    "userId": "1",
+    "productId": "4",
+    "quantity": 1
+}
+
+### Clear cart
+DELETE http://localhost:3000/cart/user/1/clear

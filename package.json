@@ -1,10 +1,10 @@
 {
-  "name": "rocketlab-backend",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "rocketlab-music-store",
+  "version": "1.0.0",
+  "description": "API backend para loja de instrumentos musicais online",
+  "author": "Luan Kato",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "start": "nest start",

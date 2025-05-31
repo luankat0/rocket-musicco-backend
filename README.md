@@ -1,14 +1,14 @@
-# 🚀 RocketLab Shopping API
+# 🎵 RocketLab Musicco E-Commerce API
 
-API backend para sistema de compras online desenvolvida com NestJS, TypeScript e SQLite.
+API backend para loja de instrumentos musicais desenvolvida com NestJS, TypeScript e SQLite.
 
 ## 📋 Funcionalidades
 
 ### ✅ Produtos
-- ✨ Criar, listar, atualizar e deletar produtos
-- 🔍 Buscar produtos por nome ou descrição
+- 🎸 Criar, listar, atualizar e deletar instrumentos musicais
+- 🔍 Buscar instrumentos por nome ou descrição
 - 💰 Filtrar produtos por faixa de preço
-- 📦 Listar apenas produtos em estoque
+- 📦 Listar apenas instrumentos em estoque
 - 🏷️ Validação de dados com mensagens de erro personalizadas
 
 ### 👥 Usuários
@@ -17,7 +17,7 @@ API backend para sistema de compras online desenvolvida com NestJS, TypeScript e
 - 📍 Suporte a endereço e telefone
 
 ### 🛒 Carrinho de Compras
-- ➕ Adicionar produtos ao carrinho
+- ➕ Adicionar instrumentos ao carrinho
 - 📝 Atualizar quantidade de itens
 - ❌ Remover itens do carrinho
 - 🧹 Limpar carrinho completamente
@@ -80,14 +80,14 @@ A documentação completa da API está disponível através do Swagger em:
 
 ### Principais endpoints:
 
-#### 🛍️ Produtos
-- `GET /products` - Listar todos os produtos
-- `GET /products/search?q={termo}` - Buscar produtos
-- `GET /products/in-stock` - Produtos em estoque
+#### 🎼 Instrumentos
+- `GET /products` - Listar todos os instrumentos
+- `GET /products/search?q={termo}` - Buscar instrumentos
+- `GET /products/in-stock` - Instrumentos em estoque
 - `GET /products/price-range?min={min}&max={max}` - Filtrar por preço
-- `POST /products` - Criar produto
-- `PATCH /products/{id}` - Atualizar produto
-- `DELETE /products/{id}` - Deletar produto
+- `POST /products` - Criar instrumento
+- `PATCH /products/{id}` - Atualizar instrumento
+- `DELETE /products/{id}` - Deletar instrumento
 
 #### 👥 Usuários
 - `GET /users` - Listar usuários
@@ -113,16 +113,16 @@ A documentação completa da API está disponível através do Swagger em:
 
 ## 💼 Exemplos de Uso
 
-### Criar um produto
+### Criar um instrumento
 ```bash
 curl -X POST http://localhost:3000/products \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Smartphone XYZ",
-    "description": "Smartphone com 128GB de armazenamento",
-    "price": 899.99,
-    "stock": 50,
-    "imageUrl": "https://example.com/smartphone.jpg"
+    "name": "Guitarra Fender Stratocaster",
+    "description": "Guitarra elétrica com corpo em alder e braço em maple",
+    "price": 2499.99,
+    "category": "Guitarras",
+    "stock": 15
   }'
 ```
 
@@ -131,21 +131,20 @@ curl -X POST http://localhost:3000/products \
 curl -X POST http://localhost:3000/users \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "João Silva",
-    "email": "joao@email.com",
-    "phone": "(11) 99999-9999",
-    "address": "Rua das Flores, 123"
+    "name": "Carlos Música",
+    "email": "carlos@email.com",
+    "password": "senha123"
   }'
 ```
 
-### Adicionar produto ao carrinho
+### Adicionar instrumento ao carrinho
 ```bash
 curl -X POST http://localhost:3000/cart/add \
   -H "Content-Type: application/json" \
   -d '{
-    "userId": "user-abc123",
-    "productId": "product-xyz789",
-    "quantity": 2
+    "userId": "1",
+    "productId": "1",
+    "quantity": 1
   }'
 ```
 
@@ -154,9 +153,7 @@ curl -X POST http://localhost:3000/cart/add \
 curl -X POST http://localhost:3000/orders \
   -H "Content-Type: application/json" \
   -d '{
-    "userId": "user-abc123",
-    "shippingAddress": "Rua das Entregas, 456",
-    "notes": "Entrega durante horário comercial"
+    "userId": "1"
   }'
 ```
 

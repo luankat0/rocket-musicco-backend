@@ -3,7 +3,7 @@ import { IsString, IsNumber, IsOptional, IsUrl, Min, MinLength } from "class-val
 export class CreateProductDto {
 
     @IsString()
-    @MinLength(2, { message: 'Tamanho do nome do Produto deve ser 2 ou mais' })
+    @MinLength(2, { message: 'Nome do instrumento deve ter 2 ou mais caracteres' })
     name: string;
 
     @IsString()
@@ -14,12 +14,16 @@ export class CreateProductDto {
     @Min(0.01, { message: 'Preço deve ser maior que 0' })
     price: number;
 
-    @IsNumber({}, { message: 'Quantidade deve ser um número válido' })
-    @Min(0, { message: 'Quantidade deve ser maior ou igual a 0' })
+    @IsString()
+    @IsOptional()
+    category?: string;
+
+    @IsNumber({}, { message: 'Quantidade em estoque deve ser um número válido' })
+    @Min(0, { message: 'Quantidade em estoque deve ser maior ou igual a 0' })
     stock: number;
 
     @IsString()
-    @IsUrl({}, { message: 'A URL da Imagem deve ser válida' })
+    @IsUrl({}, { message: 'A URL da imagem deve ser válida' })
     @IsOptional()
     imageUrl?: string;
 }

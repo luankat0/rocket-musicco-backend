@@ -15,13 +15,11 @@ export class CartController {
     @ApiResponse({ status: 404, description: 'Usuário não encontrado.' })
     getCartByUserId(@Param('userId') userId: string) {
         return this.cartService.getCartByUserId(userId);
-    }
-
-    @Post('add')
-    @ApiOperation({ summary: 'Adicionar produto ao carrinho' })
-    @ApiResponse({ status: 200, description: 'Produto adicionado ao carrinho com sucesso.' })
+    }    @Post('add')
+    @ApiOperation({ summary: 'Adicionar instrumento ao carrinho' })
+    @ApiResponse({ status: 200, description: 'Instrumento adicionado ao carrinho com sucesso.' })
     @ApiResponse({ status: 400, description: 'Estoque insuficiente ou dados inválidos.' })
-    @ApiResponse({ status: 404, description: 'Produto ou usuário não encontrado.' })
+    @ApiResponse({ status: 404, description: 'Instrumento ou usuário não encontrado.' })
     addToCart(@Body() addToCartDto: AddToCartDto) {
         return this.cartService.addToCart(addToCartDto);
     }

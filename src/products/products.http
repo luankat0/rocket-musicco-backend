@@ -1,31 +1,119 @@
-### List products
+### List all instruments
 GET http://localhost:3000/products
 
-### Get product
+### Get instrument by ID
 GET http://localhost:3000/products/1
 
-### Create product
+### Search instruments by name or description
+GET http://localhost:3000/products/search?query=guitarra
+
+### Get instruments in stock only
+GET http://localhost:3000/products/in-stock
+
+### Filter instruments by price range
+GET http://localhost:3000/products/price-range?minPrice=500&maxPrice=3000
+
+### Filter instruments by price range (with category)
+GET http://localhost:3000/products/price-range?minPrice=200&maxPrice=1000&category=Violao
+
+### Create instrument - Electric Guitar
 POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "name": "New Product",
-    "price": 19.99,
-    "description": "A brand new product",
-    "category": "Electronics",
-    "stock": 100
+    "name": "Guitarra Fender Stratocaster Player",
+    "price": 2899.99,
+    "description": "Guitarra elétrica com corpo em alder, braço em maple e captadores Player Alnico V",
+    "category": "Guitarras",
+    "stock": 12
 }
-### Update products
-PATCH  http://localhost:3000/products/1
+
+### Create instrument - Acoustic Guitar
+POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "name": "Tomingos",
-    "price": 24.99,
-    "description": "An updated product description",
-    "category": "Electronics",
-    "stock": 150
+    "name": "Violão Yamaha FG830",
+    "price": 1299.99,
+    "description": "Violão folk com tampo em spruce sólido e laterais/fundo em rosewood",
+    "category": "Violao",
+    "stock": 25
 }
 
-### Delete product
+### Create instrument - Electric Bass
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Baixo Fender Precision Bass",
+    "price": 3499.99,
+    "description": "Contrabaixo elétrico 4 cordas com corpo em alder e braço em maple",
+    "category": "Baixos",
+    "stock": 8
+}
+
+### Create instrument - Drums
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Bateria Pearl Export EXX725",
+    "price": 4299.99,
+    "description": "Kit de bateria completo com 5 tambores, cascos em poplar e ferragens cromadas",
+    "category": "Baterias",
+    "stock": 5
+}
+
+### Create instrument - Keyboard
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Teclado Yamaha PSR-E373",
+    "price": 899.99,
+    "description": "Teclado arranjador 61 teclas com 622 vozes e 205 estilos",
+    "category": "Teclados",
+    "stock": 15
+}
+
+### Create instrument - Saxophone
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Saxofone Alto Yamaha YAS-280",
+    "price": 5799.99,
+    "description": "Saxofone alto em mi bemol, corpo em latão dourado com chaves niqueladas",
+    "category": "Sopros",
+    "stock": 3
+}
+
+### Update instrument
+PATCH http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+    "name": "Guitarra Fender Stratocaster Player Plus",
+    "price": 3299.99,
+    "description": "Guitarra elétrica com corpo em alder, braço em maple e captadores Player Plus Noiseless",
+    "stock": 10
+}
+
+### Update instrument stock only
+PATCH http://localhost:3000/products/2
+Content-Type: application/json
+
+{
+    "stock": 30
+}
+
+### Update instrument price only
+PATCH http://localhost:3000/products/3
+Content-Type: application/json
+
+{
+    "price": 3199.99
+}
+
+### Delete instrument
 DELETE http://localhost:3000/products/1

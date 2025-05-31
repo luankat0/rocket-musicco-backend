@@ -7,11 +7,9 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 @ApiTags('orders')
 @Controller('orders')
 export class OrdersController {
-    constructor(private readonly ordersService: OrdersService) {}
-
-    @Post()
+    constructor(private readonly ordersService: OrdersService) {}    @Post()
     @HttpCode(HttpStatus.CREATED)
-    @ApiOperation({ summary: 'Finalizar compra (criar pedido)' })
+    @ApiOperation({ summary: 'Finalizar compra de instrumentos (criar pedido)' })
     @ApiResponse({ status: 201, description: 'Pedido criado com sucesso.' })
     @ApiResponse({ status: 400, description: 'Carrinho vazio ou estoque insuficiente.' })
     @ApiResponse({ status: 404, description: 'Usuário não encontrado.' })

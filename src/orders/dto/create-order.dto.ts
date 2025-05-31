@@ -1,14 +1,14 @@
 import { IsString, IsOptional } from "class-validator";
 
 export class CreateOrderDto {
-    @IsString()
+    @IsString({ message: 'ID do usuário deve ser uma string válida' })
     userId: string;
 
-    @IsString()
+    @IsString({ message: 'Endereço de entrega deve ser uma string válida' })
     @IsOptional()
     shippingAddress?: string;
 
-    @IsString()
+    @IsString({ message: 'Observações devem ser uma string válida' })
     @IsOptional()
     notes?: string;
 }

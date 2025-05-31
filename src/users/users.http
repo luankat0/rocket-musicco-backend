@@ -1,0 +1,37 @@
+### List all users
+GET http://localhost:3000/users
+
+### Get user by ID
+GET http://localhost:3000/users/1
+
+### Create musician user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Carlos Santana",
+    "email": "carlos.santana@email.com",
+    "password": "musica123"
+}
+
+### Create music teacher user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Ana Beatriz",
+    "email": "ana.professora@email.com", 
+    "password": "ensino456"
+}
+
+### Update user
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+    "name": "Carlos Santana Silva",
+    "email": "carlos.santana.music@email.com"
+}
+
+### Delete user
+DELETE http://localhost:3000/users/1

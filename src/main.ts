@@ -15,10 +15,10 @@ async function bootstrap() {
 
 	// Configuração do Swagger
 	const config = new DocumentBuilder()
-		.setTitle('RocketLab Shopping API')
-		.setDescription('API para sistema de compras online')
+		.setTitle('RocketLab Musicco E-Commerce API')
+		.setDescription('API para loja de instrumentos musicais online')
 		.setVersion('1.0')
-		.addTag('products', 'Operações relacionadas a produtos')
+		.addTag('products', 'Operações relacionadas a instrumentos musicais')
 		.addTag('users', 'Operações relacionadas a usuários')
 		.addTag('cart', 'Operações relacionadas ao carrinho de compras')
 		.addTag('orders', 'Operações relacionadas a pedidos')

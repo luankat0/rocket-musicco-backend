@@ -1,0 +1,27 @@
+### List all orders
+GET http://localhost:3000/orders
+
+### Get order by ID
+GET http://localhost:3000/orders/1
+
+### Get orders by user ID
+GET http://localhost:3000/orders/user/1
+
+### Create order (checkout from cart)
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "userId": "1"
+}
+
+### Update order status
+PATCH http://localhost:3000/orders/1
+Content-Type: application/json
+
+{
+    "status": "shipped"
+}
+
+### Cancel order
+DELETE http://localhost:3000/orders/1
