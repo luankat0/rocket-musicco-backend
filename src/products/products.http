@@ -1,0 +1,31 @@
+### List products
+GET http://localhost:3000/products
+
+### Get product
+GET http://localhost:3000/products/1
+
+### Create product
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "New Product",
+    "price": 19.99,
+    "description": "A brand new product",
+    "category": "Electronics",
+    "stock": 100
+}
+### Update products
+PATCH  http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+    "name": "Tomingos",
+    "price": 24.99,
+    "description": "An updated product description",
+    "category": "Electronics",
+    "stock": 150
+}
+
+### Delete product
+DELETE http://localhost:3000/products/1
