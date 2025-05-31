@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from 'typeorm';
+import { BeforeInsert, Column, Entity, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { nanoid } from 'nanoid';
 
 @Entity("products")
@@ -12,7 +12,7 @@ export class Product {
     @Column({ nullable: true })
     description?: string;
 
-    @Column('decimal')
+    @Column('decimal', { precision: 10, scale: 2 })
     price: number;
 
     @Column('int')
@@ -21,8 +21,11 @@ export class Product {
     @Column({ nullable: true })
     imageUrl?: string;
 
-    @Column({ type: 'datetime', nullable: true })
-    createdAt?: Date;
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
 
     @BeforeInsert()
     generateId() {
