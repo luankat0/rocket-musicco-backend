@@ -1,14 +1,181 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚀 RocketLab Shopping API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API backend para sistema de compras online desenvolvida com NestJS, TypeScript e SQLite.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+## 📋 Funcionalidades
+
+### ✅ Produtos
+- ✨ Criar, listar, atualizar e deletar produtos
+- 🔍 Buscar produtos por nome ou descrição
+- 💰 Filtrar produtos por faixa de preço
+- 📦 Listar apenas produtos em estoque
+- 🏷️ Validação de dados com mensagens de erro personalizadas
+
+### 👥 Usuários
+- 👤 Criar, listar, atualizar e deletar usuários
+- 📧 Validação de email único
+- 📍 Suporte a endereço e telefone
+
+### 🛒 Carrinho de Compras
+- ➕ Adicionar produtos ao carrinho
+- 📝 Atualizar quantidade de itens
+- ❌ Remover itens do carrinho
+- 🧹 Limpar carrinho completamente
+- 💯 Cálculo automático do total
+
+### 📦 Pedidos
+- ✅ Finalizar compra do carrinho
+- 📊 Controle de status do pedido
+- 📋 Histórico de pedidos por usuário
+- 🔄 Atualização automática do estoque
+- ❌ Cancelamento de pedidos pendentes
+
+## 🛠️ Tecnologias
+
+- **NestJS** - Framework Node.js
+- **TypeScript** - Linguagem de programação
+- **TypeORM** - ORM para banco de dados
+- **SQLite** - Banco de dados
+- **Class Validator** - Validação de dados
+- **Swagger** - Documentação da API
+
+## 🚀 Como executar
+
+### Pré-requisitos
+
+- Node.js (versão 16 ou superior)
+- npm ou yarn
+
+### Passo a passo
+
+1. **Clone o repositório**
+```bash
+git clone <url-do-repositorio>
+cd rocketlab-backend
+```
+
+2. **Instale as dependências**
+```bash
+npm install
+```
+
+3. **Execute a aplicação**
+```bash
+# Desenvolvimento
+npm run start:dev
+
+# Produção
+npm run build
+npm run start:prod
+```
+
+4. **Acesse a aplicação**
+- API: http://localhost:3000
+- Documentação: http://localhost:3000/api
+
+## 📚 Documentação da API
+
+A documentação completa da API está disponível através do Swagger em:
+**http://localhost:3000/api**
+
+### Principais endpoints:
+
+#### 🛍️ Produtos
+- `GET /products` - Listar todos os produtos
+- `GET /products/search?q={termo}` - Buscar produtos
+- `GET /products/in-stock` - Produtos em estoque
+- `GET /products/price-range?min={min}&max={max}` - Filtrar por preço
+- `POST /products` - Criar produto
+- `PATCH /products/{id}` - Atualizar produto
+- `DELETE /products/{id}` - Deletar produto
+
+#### 👥 Usuários
+- `GET /users` - Listar usuários
+- `POST /users` - Criar usuário
+- `GET /users/{id}` - Buscar usuário
+- `PATCH /users/{id}` - Atualizar usuário
+- `DELETE /users/{id}` - Deletar usuário
+
+#### 🛒 Carrinho
+- `GET /cart/user/{userId}` - Obter carrinho do usuário
+- `POST /cart/add` - Adicionar ao carrinho
+- `PATCH /cart/item/{itemId}` - Atualizar item
+- `DELETE /cart/item/{itemId}` - Remover item
+- `DELETE /cart/user/{userId}/clear` - Limpar carrinho
+
+#### 📦 Pedidos
+- `POST /orders` - Finalizar compra
+- `GET /orders` - Listar pedidos
+- `GET /orders/{id}` - Buscar pedido
+- `GET /orders/user/{userId}` - Pedidos do usuário
+- `PATCH /orders/{id}` - Atualizar status
+- `DELETE /orders/{id}` - Cancelar pedido
+
+## 💼 Exemplos de Uso
+
+### Criar um produto
+```bash
+curl -X POST http://localhost:3000/products \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Smartphone XYZ",
+    "description": "Smartphone com 128GB de armazenamento",
+    "price": 899.99,
+    "stock": 50,
+    "imageUrl": "https://example.com/smartphone.jpg"
+  }'
+```
+
+### Criar um usuário
+```bash
+curl -X POST http://localhost:3000/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "João Silva",
+    "email": "joao@email.com",
+    "phone": "(11) 99999-9999",
+    "address": "Rua das Flores, 123"
+  }'
+```
+
+### Adicionar produto ao carrinho
+```bash
+curl -X POST http://localhost:3000/cart/add \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user-abc123",
+    "productId": "product-xyz789",
+    "quantity": 2
+  }'
+```
+
+### Finalizar compra
+```bash
+curl -X POST http://localhost:3000/orders \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user-abc123",
+    "shippingAddress": "Rua das Entregas, 456",
+    "notes": "Entrega durante horário comercial"
+  }'
+```
+
+## 🧪 Testes
+
+```bash
+# Testes unitários
+npm run test
+
+# Testes e2e
+npm run test:e2e
+
+# Coverage
+npm run test:cov
+```
+
+---
+
+Desenvolvido com ❤️ durante o desafio da Visagio Rocket-Lab
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
 <a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
 <a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
