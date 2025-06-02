@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('deve retornar mensagem receptativa', () => {
+      expect(appController.getHello()).toBe('Bem-vindo à API RocketLab Musicco - Sua loja de instrumentos musicais online!');
     });
   });
 });
